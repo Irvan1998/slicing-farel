@@ -1,22 +1,34 @@
-@import "./base.css";
+@import url("https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-  font-weight: normal;
-}
-
-@media (min-width: 1024px) {
-  body {
-    display: flex;
-    place-items: center;
+@layer base {
+  *,
+  *::before,
+  *::after {
+    @apply box-border m-0 font-normal font-urbanist text-base;
   }
 
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply min-h-screen text-text-dark bg-white transition-colors duration-500 ease-in-out antialiased;
+  }
+
+  button {
+    @apply px-10 py-4 rounded-lg font-bold text-white bg-primary-500 cursor-pointer transition-colors duration-300 ease-in-out;
+    &:hover {
+      @apply bg-white text-primary-500 outline outline-2 outline-primary-500 -outline-offset-2;
+    }
+  }
+}
+
+@layer components {
   #app {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
+    @apply pt-20;
   }
 }
