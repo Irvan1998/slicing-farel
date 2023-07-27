@@ -18,17 +18,25 @@
   body {
     @apply min-h-screen text-text-dark bg-white transition-colors duration-500 ease-in-out antialiased;
   }
-
-  button {
-    @apply py-3.5 rounded-lg font-bold text-white bg-primary-500 cursor-pointer transition-colors duration-300 ease-in-out text-sm min-w-[110px];
-    &:hover {
-      @apply bg-white text-primary-500 outline outline-2 outline-primary-500 -outline-offset-2;
-    }
-  }
 }
 
 @layer components {
   #app {
     /* @apply pt-20; */
+  }
+
+  .btn {
+    @apply py-3.5 rounded-lg font-bold cursor-pointer transition-colors duration-300 ease-in-out text-sm min-w-[110px];
+  }
+
+  .primary-btn {
+    @apply text-white bg-primary-500;
+    &:hover {
+      @apply bg-white text-primary-500 outline outline-2 outline-primary-500 -outline-offset-2;
+    }
+  }
+
+  .secondary-btn {
+    @apply bg-white text-primary-500 outline outline-2 outline-primary-500 -outline-offset-2;
   }
 }

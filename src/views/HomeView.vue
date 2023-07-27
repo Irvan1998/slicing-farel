@@ -1,6 +1,12 @@
 <script setup>
 import { useSectionStore } from "../stores/section";
 import { onMounted, ref } from "vue";
+import Accordion from "../components/AccordionComponent.vue";
+import BoltshiftCompany from "../components/logo/BoltshiftCompany.vue";
+import FeatherDevCompany from "../components/logo/FeatherDevCompany.vue";
+import GlobalBankCompany from "../components/logo/GlobalBankCompany.vue";
+import LightboxCompany from "../components/logo/LightboxCompany.vue";
+import NietzcheCompany from "../components/logo/NietzcheCompany.vue";
 
 const sectionStore = useSectionStore();
 
@@ -53,12 +59,8 @@ onMounted(() => {
           <span class="text-primary-500 font-bold">Corze</span>!
         </p>
         <div class="flex justify-center gap-4 w-full max-w-xs">
-          <button class="w-full">Try Free Trial</button>
-          <button
-            class="bg-white text-primary-500 outline outline-2 outline-primary-500 -outline-offset-2 w-full"
-          >
-            Demo the App
-          </button>
+          <button class="btn primary-btn w-full">Try Free Trial</button>
+          <button class="btn secondary-btn w-full">Demo the App</button>
         </div>
       </div>
 
@@ -75,8 +77,78 @@ onMounted(() => {
         class="mt-20 block w-full lg:hidden"
       />
     </section>
-    <section class="min-h-screen bg-neutral-500" id="about_us" ref="about_us">
-      About
+    <section
+      class="bg-neutral-500 px-6 py-12 lg:p-24"
+      id="about_us"
+      ref="about_us"
+    >
+      <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 lg:gap-y-20">
+        <div class="text-heading-light">
+          <h3
+            class="text-sm font-semibold mb-1 lg:text-2xl lg:font-medium lg:mb-2"
+          >
+            About Us
+          </h3>
+          <h1 class="text-2xl lg:text-5xl leading-8 font-bold">
+            Collaborate with the best teacher
+          </h1>
+        </div>
+        <div class="-mt-7 lg:mt-0">
+          <p class="font-medium mb-6 lg:mb-10">
+            We provide you courses with the best modul and trustworthy teacher
+            to ensure your learning experience is comfortable while.
+          </p>
+          <button class="btn primary-btn w-36 lg:w-44" type="button">
+            Details
+          </button>
+        </div>
+        <div>
+          <img
+            class="rounded-3xl max-h-96 w-full object-cover object-center"
+            src="../assets/about.png"
+            alt=""
+          />
+        </div>
+        <div class="flex flex-col divide-y gap-4 lg:gap-8">
+          <Accordion
+            class="pt-4 lg:pt-8 first:pt-0"
+            title="Companies Creator"
+            body="We provide you courses with the best modul and trustworthy teacher to ensure your learning experience is comfortable while also gaining new skills everyday."
+          />
+          <Accordion
+            class="pt-4 lg:pt-8 first:pt-0"
+            title="School Teacher"
+            body="We provide you courses with the best modul and trustworthy teacher to ensure your learning experience is comfortable while also gaining new skills everyday."
+            :init-show="true"
+          />
+          <Accordion
+            class="pt-4 lg:pt-8 first:pt-0"
+            title="Bootcamp Mentor"
+            body="We provide you courses with the best modul and trustworthy teacher to ensure your learning experience is comfortable while also gaining new skills everyday."
+          />
+          <Accordion
+            class="pt-4 lg:pt-8 first:pt-0"
+            title="Agencies Advisor"
+            body="We provide you courses with the best modul and trustworthy teacher to ensure your learning experience is comfortable while also gaining new skills everyday."
+          />
+
+          <!-- Accordion Open by Index -->
+        </div>
+      </div>
+    </section>
+    <section
+      class="hidden flex-col justify-center items-center gap-8 bg-neutral-500 px-20 py-12 lg:flex"
+    >
+      <h4 class="text-base font-medium">
+        Over 250+ Agencies & Companies Support
+      </h4>
+      <div class="flex gap-16">
+        <BoltshiftCompany />
+        <FeatherDevCompany />
+        <GlobalBankCompany />
+        <LightboxCompany />
+        <NietzcheCompany />
+      </div>
     </section>
     <section class="min-h-screen" id="features" ref="features">About</section>
     <section class="min-h-screen" id="testimony" ref="testimony">About</section>

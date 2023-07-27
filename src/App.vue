@@ -62,7 +62,7 @@ watch(
       />
     </nav>
 
-    <button class="hidden lg:inline-block">Get Started</button>
+    <button class="btn primary-btn hidden lg:inline-block">Get Started</button>
 
     <div class="block lg:hidden">
       <ListIcon @click="toggleNav" class="cursor-pointer" />
@@ -89,7 +89,7 @@ watch(
             v-text="item.replace('_', ' ')"
           />
 
-          <button class="my-2 mx-4">Get Started</button>
+          <button class="btn primary-btn my-2 mx-4">Get Started</button>
         </nav>
       </Transition>
     </div>
