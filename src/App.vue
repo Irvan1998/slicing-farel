@@ -7,7 +7,7 @@ import { useSectionStore } from "./stores/section";
 
 const sectionStore = useSectionStore();
 
-const showNav = ref(true);
+const showNav = ref(false);
 const sections = ref({});
 const activeSection = ref(null);
 
@@ -22,10 +22,11 @@ const closeOnEscape = (e) => {
 };
 
 const onScroll = () => {
+  const appPaddingTop = parseInt(document.querySelector("header").offsetHeight);
   activeSection.value = Object.values(sections.value).find(
     (section) =>
-      section.offsetTop <= window.scrollY + 1 &&
-      section.offsetTop + section.offsetHeight > window.scrollY + 1
+      section.offsetTop <= window.scrollY + appPaddingTop &&
+      section.offsetTop + section.offsetHeight > window.scrollY + appPaddingTop
   ).id;
 };
 
@@ -88,7 +89,7 @@ watch(
             v-text="item.replace('_', ' ')"
           />
 
-          <button class="py-4 px-6 my-2 mx-4 text-sm">Get Started</button>
+          <button class="my-2 mx-4">Get Started</button>
         </nav>
       </Transition>
     </div>
@@ -99,7 +100,7 @@ watch(
 
 <style scoped lang="scss">
 header {
-  @apply bg-white flex items-center justify-between w-full p-6 fixed top-0 lg:px-24 lg:py-5;
+  @apply bg-white flex items-center justify-between w-full p-6 fixed top-0 z-50 lg:px-24 lg:py-5;
 
   a {
     @apply text-text-dark no-underline font-medium text-base capitalize;
