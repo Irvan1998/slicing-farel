@@ -1,10 +1,12 @@
 <script setup>
+import "swiper/css/effect-creative";
+import "swiper/css";
+
 import { useSectionStore } from "../stores/section";
 import { onMounted, ref } from "vue";
 import { Swiper, SwiperSlide } from "swiper/vue";
-// import required modules
-import { EffectCreative } from "swiper/modules";
-import "swiper/css/effect-creative";
+import { Keyboard, EffectCreative } from "swiper/modules";
+
 import Accordion from "../components/AccordionComponent.vue";
 import BoltshiftCompany from "../components/logo/BoltshiftCompany.vue";
 import FeatherDevCompany from "../components/logo/FeatherDevCompany.vue";
@@ -226,17 +228,22 @@ onMounted(() => {
         :slides-per-view="1"
         :grab-cursor="true"
         :effect="'creative'"
+        :keyboard="{
+          enabled: true,
+        }"
         :creativeEffect="{
           prev: {
             shadow: true,
             translate: ['-130%', 0, -500],
+            opacity: 0,
           },
           next: {
             shadow: true,
             translate: ['130%', 0, -500],
+            opacity: 0,
           },
         }"
-        :modules="[EffectCreative]"
+        :modules="[EffectCreative, Keyboard]"
         class="relative"
         @swiper="onSwiper"
       >

@@ -4,7 +4,6 @@ import ListIcon from "./components/icons/ListIcon.vue";
 import { ref, watch, onMounted } from "vue";
 import OverlayBackground from "./components/OverlayBackground.vue";
 import { useSectionStore } from "./stores/section";
-import "swiper/css";
 
 const sectionStore = useSectionStore();
 
