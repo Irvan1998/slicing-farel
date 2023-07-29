@@ -4,6 +4,7 @@ import ListIcon from "./components/icons/ListIcon.vue";
 import { ref, watch, onMounted } from "vue";
 import OverlayBackground from "./components/OverlayBackground.vue";
 import { useSectionStore } from "./stores/section";
+import "swiper/css";
 
 const sectionStore = useSectionStore();
 
@@ -23,11 +24,12 @@ const closeOnEscape = (e) => {
 
 const onScroll = () => {
   const appPaddingTop = parseInt(document.querySelector("header").offsetHeight);
-  activeSection.value = Object.values(sections.value).find(
+  const active = Object.values(sections.value).find(
     (section) =>
       section.offsetTop <= window.scrollY + appPaddingTop &&
       section.offsetTop + section.offsetHeight > window.scrollY + appPaddingTop
-  ).id;
+  );
+  activeSection.value = active?.id;
 };
 
 onMounted(() => {
