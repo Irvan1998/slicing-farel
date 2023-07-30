@@ -296,13 +296,13 @@ onMounted(() => {
         </SwiperSlide>
 
         <div
-          class="flex justify-between gap-6 absolute z-10 bottom-0 right-0 w-full transition-all ease-in-out duration-300 lg:w-fit lg:bottom-12 lg:-translate-y-1/2"
+          class="flex justify-between gap-6 absolute z-10 bottom-0 right-0 w-full transition-all ease-in-out duration-300 lg:w-fit lg:bottom-12 lg:py-2"
           v-if="swiperInstance"
         >
           <div class="w-32 lg:hidden"></div>
           <div class="flex-1 flex justify-between gap-4">
             <span
-              class="p-1 rounded-lg"
+              class="p-1 rounded-lg lg:p-3"
               :class="{
                 'bg-white bg-opacity-25 cursor-auto':
                   swiperInstance.isBeginning,
@@ -314,7 +314,7 @@ onMounted(() => {
               <CaretLeftIcon />
             </span>
             <span
-              class="p-1 rounded-lg"
+              class="p-1 rounded-lg lg:p-3"
               :class="{
                 'bg-white bg-opacity-25 cursor-auto': swiperInstance.isEnd,
                 'bg-primary-500 hover:bg-primary-400 cursor-pointer':
@@ -327,6 +327,21 @@ onMounted(() => {
         </div>
       </Swiper>
     </section>
-    <section class="min-h-screen" id="pricing" ref="pricing"></section>
+
+    <section class="px-6 py-12 lg:p-24" id="pricing" ref="pricing">
+      <div class="flex flex-col items-center">
+        <header class="text-heading-dark text-center mb-6 lg:mb-16">
+          <h3
+            class="text-sm font-semibold mb-1 lg:text-2xl lg:font-medium lg:mb-2 text-primary-500"
+          >
+            Pricing
+          </h3>
+          <h1 class="text-2xl lg:text-5xl leading-8 font-bold">
+            Best Deals For You
+          </h1>
+        </header>
+        <main class="grid gap-10 lg:grid-cols-3 mb-10 lg:gap-6 lg:mb-16"></main>
+      </div>
+    </section>
   </main>
 </template>
