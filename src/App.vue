@@ -4,6 +4,9 @@ import ListIcon from "./components/icons/ListIcon.vue";
 import { ref, watch, onMounted } from "vue";
 import OverlayBackground from "./components/OverlayBackground.vue";
 import { useSectionStore } from "./stores/section";
+import MailIcon from "./components/icons/MailIcon.vue";
+import TwitterIcon from "./components/icons/TwitterIcon.vue";
+import FacebookIcon from "./components/icons/FacebookIcon.vue";
 
 const sectionStore = useSectionStore();
 
@@ -97,6 +100,78 @@ watch(
   </header>
 
   <RouterView />
+
+  <footer>
+    <div class="bg-neutral-500 p-6 pt-12 lg:p-24 divide-y">
+      <div
+        class="flex flex-col items-center gap-10 pb-16 md:flex-row lg:pb-24 lg:gap-28"
+      >
+        <div>
+          <h1 class="text-white text-3xl font-bold mb-4 lg:text-5xl">
+            Learn on all platform <br />
+            with
+            <span class="text-primary-500 text-3xl font-bold lg:text-5xl"
+              >Corze</span
+            >
+          </h1>
+          <p
+            class="text-text-light text-sm font-medium mb-10 lg:text-lg lg:mb-16 lg:w-2/3"
+          >
+            Available on Android, IOS and Windows with all available features
+            for the best productivity
+          </p>
+          <div class="flex flex-wrap gap-3 lg:gap-6 lg:h-12">
+            <img
+              class="h-full"
+              src="src\assets\google-play.svg"
+              alt="Google Play"
+            />
+            <img
+              class="h-full"
+              src="src\assets\app-store.svg"
+              alt="App Store"
+            />
+            <img
+              class="h-full"
+              src="src\assets\microsoft-store.svg"
+              alt="Microsoft Store"
+            />
+          </div>
+        </div>
+        <div
+          class="flex rounded-xl gap-4 w-full aspect-video md:w-1/2 lg:gap-6"
+        >
+          <img
+            class="bg-[#EAF6FE] rounded-tl-xl rounded-bl-xl w-1/3"
+            src="src\assets\footer-phone-pict.svg"
+            alt=""
+          />
+          <img
+            class="bg-[#EAF6FE] rounded-tr-xl rounded-br-xl w-full"
+            src="src\assets\footer-desktop-pict.svg"
+            alt=""
+          />
+        </div>
+      </div>
+
+      <div
+        class="flex justify-between items-center gap-4 flex-wrap pt-4 lg:pt-10"
+      >
+        <img class="lg:h-12" src="./assets/logo.svg" alt="corze" />
+        <p
+          class="text-xs text-center text-text-light w-full order-2 lg:order-none lg:w-fit lg:text-base"
+        >
+          Corze is associated with a lot company. <br class="block lg:hidden" />
+          Terms of use and Privacy Policy is applied.
+        </p>
+        <div class="flex items-center gap-6">
+          <MailIcon />
+          <TwitterIcon />
+          <FacebookIcon />
+        </div>
+      </div>
+    </div>
+  </footer>
 </template>
 
 <style scoped lang="scss">
