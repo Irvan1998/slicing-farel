@@ -106,7 +106,7 @@ onMounted(() => {
 <template>
   <main>
     <section
-      class="flex flex-col items-center pl-6 lg:pr-6 relative overflow-hidden"
+      class="flex flex-col items-center pl-6 lg:px-28 relative overflow-hidden"
       id="home"
       ref="homeSection"
     >
@@ -118,7 +118,27 @@ onMounted(() => {
       <img
         src="../assets/vectors/PencilVector.svg"
         alt=""
-        class="absolute w-6 sm:w-8 md:w-10 lg:w-12 aspect-square right-10 top-24 lg:right-96 lg:top-28 -z-10 rotate-[7deg]"
+        class="absolute w-6 sm:w-8 md:w-10 lg:w-12 aspect-square right-10 top-24 sm:right-24 md:right-48 lg:right-80 lg:top-28 -z-10 rotate-[7deg]"
+      />
+      <img
+        src="../assets/vectors/EllipseVector.svg"
+        alt=""
+        class="hidden absolute w-6 sm:w-8 md:w-10 lg:w-12 aspect-square right-12 top-48 md:inline-block lg:right-44 lg:top-60 -z-10 -rotate-[47deg]"
+      />
+      <img
+        src="../assets/vectors/BookVector.svg"
+        alt=""
+        class="absolute w-6 sm:w-8 md:w-10 lg:w-12 aspect-square right-28 top-64 md:right-1/2 md:translate-x-1/2 lg:top-96 lg:translate-y-12 -z-10 -rotate-[47deg]"
+      />
+      <img
+        src="../assets/vectors/LineVector.svg"
+        alt=""
+        class="absolute w-12 sm:w-14 md:w-16 lg:w-20 aspect-square left-10 top-80 translate-y-12 lg:top-96 lg:left-28 lg:translate-y-12 lg:translate-x-1/2 -z-10"
+      />
+      <img
+        src="../assets/vectors/RulerPencilVector.svg"
+        alt=""
+        class="rotate-[51deg] absolute w-6 sm:w-8 md:w-10 lg:w-12 aspect-square right-10 top-96 lg:right-32 lg:top-96 lg:translate-y-24 -z-10"
       />
 
       <div
@@ -153,11 +173,23 @@ onMounted(() => {
     </section>
 
     <section
-      class="bg-neutral-500 px-6 py-12 lg:p-24"
+      class="bg-neutral-500 px-6 py-12 lg:p-24 relative overflow-hidden"
       id="about_us"
       ref="aboutUsSection"
     >
-      <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 lg:gap-y-20">
+      <img
+        src="src\assets\vectors\AboutUsVector.svg"
+        alt=""
+        class="absolute scale-[200%] rotate-[143deg] top-40 left-1/3 md:scale-150 lg:scale-100 lg:rotate-[24deg] lg:-left-24 lg:top-32 z-0"
+      />
+      <img
+        src="src\assets\vectors\AboutUsVector.svg"
+        alt=""
+        class="absolute scale-[200%] -rotate-[140deg] -bottom-4 left-20 translate-x-2 md:scale-150 lg:scale-100 lg:-rotate-[44deg] lg:left-auto lg:-right-36 lg:bottom-48 z-0"
+      />
+      <div
+        class="grid lg:grid-cols-2 gap-10 lg:gap-16 lg:gap-y-20 relative z-10"
+      >
         <header class="text-heading-light">
           <h3
             class="text-sm font-semibold mb-1 lg:text-2xl lg:font-medium lg:mb-2"
@@ -463,12 +495,12 @@ onMounted(() => {
                       "
                     >
                       <img
-                        class="absolute rotate-[30deg] -top-2 right-11 transition-all ease-in-out delay-15000 duration-300 opacity-0 -translate-y-full group-hover:opacity-100 group-hover:translate-y-0"
+                        class="absolute rotate-[30deg] -top-[2%] -right-[1%] scale-125 transition-all ease-in-out delay-15000 duration-300 opacity-0 -translate-y-full group-hover:opacity-100 group-hover:translate-y-0"
                         src="src/assets/vectors/MultipleLineVector.svg"
                         alt=""
                       />
                       <img
-                        class="absolute rotate-[30deg] bottom-8 right-32 transition-all ease-in-out delay-15000 duration-300 opacity-0 translate-y-full group-hover:opacity-100 group-hover:-translate-y-full"
+                        class="absolute rotate-[30deg] bottom-0 -left-[25%] scale-125 transition-all ease-in-out delay-15000 duration-300 opacity-0 translate-y-full group-hover:opacity-100 group-hover:-translate-y-full"
                         src="src/assets/vectors/MultipleLineVector.svg"
                         alt=""
                       />
@@ -568,7 +600,7 @@ onMounted(() => {
               </h4>
             </div>
 
-            <div class="flex flex-col">
+            <div class="flex flex-col md:grid">
               <PricingAccordion
                 v-for="(pricing, index) in pricing.data"
                 :key="index"

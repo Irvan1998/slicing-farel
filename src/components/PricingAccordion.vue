@@ -53,8 +53,9 @@ const leave = (el) => {
       }"
       @click="toggle"
     >
+      <!-- -top-2 right-11 -->
       <img
-        class="absolute rotate-[30deg] -top-2 right-11 transition-all ease-in-out delay-15000 duration-300"
+        class="absolute rotate-[30deg] -top-[3%] right-[18%] md:scale-150 transition-all ease-in-out delay-15000 duration-300"
         :class="
           props.show
             ? 'opacity-100 translate-y-0'
@@ -64,7 +65,7 @@ const leave = (el) => {
         alt=""
       />
       <img
-        class="absolute rotate-[30deg] bottom-8 right-32 transition-all ease-in-out delay-15000 duration-300"
+        class="absolute rotate-[30deg] bottom-[8%] -left-[16%] md:scale-150 md:left-0 transition-all ease-in-out delay-15000 duration-300"
         :class="
           props.show
             ? 'opacity-100 translate-y-0'
