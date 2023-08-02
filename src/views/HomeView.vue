@@ -16,6 +16,9 @@ import NietzcheCompany from "../components/logo/NietzcheCompany.vue";
 import FeatureComponent from "../components/FeatureComponent.vue";
 import CaretLeftIcon from "../components/icons/CaretLeftIcon.vue";
 import CaretRightIcon from "../components/icons/CaretRightIcon.vue";
+import PricingAccordion from "../components/PricingAccordion.vue";
+import TickSquareIcon from "@/components/icons/TickSquareIcon.vue";
+import XCircleIcon from "@/components/icons/XCircleIcon.vue";
 
 const sectionStore = useSectionStore();
 
@@ -25,20 +28,76 @@ const onSwiper = (swiper) => {
   swiperInstance.value = swiper;
 };
 
-const home = ref(null);
-const about_us = ref(null);
-const features = ref(null);
-const testimony = ref(null);
-const pricing = ref(null);
+const homeSection = ref(null);
+const aboutUsSection = ref(null);
+const featuresSection = ref(null);
+const testimonySection = ref(null);
+const pricingSection = ref(null);
+
+const pricing = ref({
+  frequency: "monthly",
+  data: [
+    {
+      title: "Free",
+      price: 0,
+      features: {
+        "Number of courses": 12,
+        "Course management": true,
+        "All-access feature": false,
+        "Cloud storage": "1TB Storage",
+        Alerts: "Weekly",
+      },
+    },
+    {
+      title: "Premium",
+      price: 29,
+      features: {
+        "Number of courses": 24,
+        "Course management": true,
+        "All-access feature": true,
+        "Cloud storage": "10TB Storage",
+        Alerts: "Daily",
+      },
+    },
+    {
+      title: "Enterprise",
+      price: 49,
+      features: {
+        "Number of courses": "Unlimited",
+        "Course management": true,
+        "All-access feature": true,
+        "Cloud storage": "100TB Storage",
+        Alerts: "Daily",
+      },
+    },
+  ],
+});
+
+const getPricingPrice = (price) => {
+  if (pricing.value.frequency === "yearly") {
+    return price;
+  }
+  return parseInt(price / 12);
+};
+
+const activePricing = ref(1);
+
+const setActivePricing = (index) => {
+  if (index === activePricing.value) {
+    activePricing.value = null;
+    return;
+  }
+  activePricing.value = index;
+};
 
 onMounted(() => {
   sectionStore.$patch((state) => {
     state.sections = {
-      home: home,
-      about_us: about_us,
-      features: features,
-      testimony: testimony,
-      pricing: pricing,
+      home: homeSection,
+      about_us: aboutUsSection,
+      features: featuresSection,
+      testimony: testimonySection,
+      pricing: pricingSection,
     };
   });
 });
@@ -49,7 +108,7 @@ onMounted(() => {
     <section
       class="flex flex-col items-center pl-6 lg:pr-6 relative overflow-hidden"
       id="home"
-      ref="home"
+      ref="homeSection"
     >
       <img
         src="../assets/vectors/EllipseVector.svg"
@@ -96,7 +155,7 @@ onMounted(() => {
     <section
       class="bg-neutral-500 px-6 py-12 lg:p-24"
       id="about_us"
-      ref="about_us"
+      ref="aboutUsSection"
     >
       <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 lg:gap-y-20">
         <header class="text-heading-light">
@@ -168,7 +227,7 @@ onMounted(() => {
       </main>
     </section>
 
-    <section class="px-6 py-12 lg:p-24" id="features" ref="features">
+    <section class="px-6 py-12 lg:p-24" id="features" ref="featuresSection">
       <div class="flex flex-col items-center">
         <header class="text-heading-dark text-center mb-6 lg:mb-16">
           <h3
@@ -206,7 +265,7 @@ onMounted(() => {
     <section
       class="bg-neutral-500 px-6 py-12 lg:p-24"
       id="testimony"
-      ref="testimony"
+      ref="testimonySection"
     >
       <header class="text-heading-dark text-center mb-6 lg:mb-14">
         <h3
@@ -328,7 +387,7 @@ onMounted(() => {
       </Swiper>
     </section>
 
-    <section class="px-6 py-12 lg:p-24" id="pricing" ref="pricing">
+    <section class="px-6 py-12 lg:p-24" id="pricing" ref="pricingSection">
       <div class="flex flex-col items-center">
         <header class="text-heading-dark text-center mb-6 lg:mb-16">
           <h3
@@ -340,7 +399,188 @@ onMounted(() => {
             Best Deals For You
           </h1>
         </header>
-        <main class="grid gap-10 lg:grid-cols-3 mb-10 lg:gap-6 lg:mb-16"></main>
+        <main class="mb-10 lg:gap-6 lg:mb-16 lg:px-14 w-full">
+          <!-- ! Desktop View -->
+          <div
+            class="hidden rounded-[32px] shadow-[16px_16px_64px_0px_rgba(0,0,0,0.08)] bg-white overflow-hidden p-12 pt-0 lg:block"
+          >
+            <table>
+              <thead>
+                <tr>
+                  <th class="w-full pb-7">
+                    <div class="flex gap-3 mb-3 justify-center">
+                      <button
+                        class="btn"
+                        :class="
+                          pricing.frequency == 'monthly'
+                            ? 'secondary-btn'
+                            : 'primary-btn'
+                        "
+                        @click="pricing.frequency = 'monthly'"
+                      >
+                        Monthly
+                      </button>
+                      <button
+                        class="btn"
+                        :class="
+                          pricing.frequency == 'yearly'
+                            ? 'secondary-btn'
+                            : 'primary-btn'
+                        "
+                        @click="pricing.frequency = 'yearly'"
+                      >
+                        Yearly
+                      </button>
+                    </div>
+                    <h4 class="text-heading-dark text-center font-medium">
+                      Get <span class="font-bold">30%</span> off with our yearly
+                      deals!
+                    </h4>
+                  </th>
+
+                  <th
+                    class="pb-7"
+                    v-for="(pricing, index) in pricing.data"
+                    :key="index"
+                  >
+                    <div
+                      class="font-bold mb-2 p-12 rounded-2xl cursor-pointer transition-colors ease-in-out relative overflow-hidden bg-white hover:bg-neutral-500 group"
+                      @mouseenter="
+                        (el) => {
+                          const btn = el.target.querySelector('button');
+                          btn.classList.remove('secondary-btn');
+                          btn.classList.add('primary-btn');
+                          btn.innerText = 'Start Free Trial';
+                        }
+                      "
+                      @mouseleave="
+                        (el) => {
+                          const btn = el.target.querySelector('button');
+                          btn.classList.remove('primary-btn');
+                          btn.classList.add('secondary-btn');
+                          btn.innerText = 'Get Started';
+                        }
+                      "
+                    >
+                      <img
+                        class="absolute rotate-[30deg] -top-2 right-11 transition-all ease-in-out delay-15000 duration-300 opacity-0 -translate-y-full group-hover:opacity-100 group-hover:translate-y-0"
+                        src="src/assets/vectors/MultipleLineVector.svg"
+                        alt=""
+                      />
+                      <img
+                        class="absolute rotate-[30deg] bottom-8 right-32 transition-all ease-in-out delay-15000 duration-300 opacity-0 translate-y-full group-hover:opacity-100 group-hover:-translate-y-full"
+                        src="src/assets/vectors/MultipleLineVector.svg"
+                        alt=""
+                      />
+
+                      <div
+                        class="flex flex-col justify-between items-center relative"
+                      >
+                        <h4
+                          class="text-xl font-semibold mb-4 text-heading-dark group-hover:text-white"
+                          v-text="pricing.title"
+                        />
+
+                        <span
+                          class="text-4xl font-semibold mb-1 text-heading-dark group-hover:text-white"
+                          v-text="`$${getPricingPrice(pricing.price)}`"
+                        />
+                        <span
+                          class="text-sm font-medium text-text-dark group-hover:text-white"
+                          >Per member</span
+                        >
+
+                        <button class="btn mt-6 secondary-btn">
+                          Get Started
+                        </button>
+                      </div>
+                    </div>
+                  </th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr
+                  class="w-full odd:bg-gray-50"
+                  v-for="(featureKey, index) in Object.keys(
+                    pricing.data[0].features
+                  )"
+                  :key="index"
+                >
+                  <th
+                    class="text-left font-semibold text-base text-heading-dark whitespace-nowrap px-9"
+                    v-text="featureKey"
+                  />
+                  <td
+                    class="text-center p-6"
+                    v-for="(pricing, index) in pricing.data"
+                    :key="index"
+                  >
+                    <div
+                      class="w-full flex justify-center items-center"
+                      v-if="typeof pricing.features[featureKey] == 'boolean'"
+                    >
+                      <TickSquareIcon
+                        class=""
+                        v-if="pricing.features[featureKey]"
+                      />
+                      <XCircleIcon class="" v-else />
+                    </div>
+                    <template v-else>
+                      {{ pricing.features[featureKey] }}
+                    </template>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- ! Mobile Device -->
+          <div class="block lg:hidden">
+            <div>
+              <div class="flex gap-3 mb-3 justify-center">
+                <button
+                  class="btn"
+                  :class="
+                    pricing.frequency == 'monthly'
+                      ? 'secondary-btn'
+                      : 'primary-btn'
+                  "
+                  @click="pricing.frequency = 'monthly'"
+                >
+                  Monthly
+                </button>
+                <button
+                  class="btn"
+                  :class="
+                    pricing.frequency == 'yearly'
+                      ? 'secondary-btn'
+                      : 'primary-btn'
+                  "
+                  @click="pricing.frequency = 'yearly'"
+                >
+                  Yearly
+                </button>
+              </div>
+              <h4 class="text-heading-dark text-center font-medium">
+                Get <span class="font-bold">30%</span> off with our yearly
+                deals!
+              </h4>
+            </div>
+
+            <div class="flex flex-col">
+              <PricingAccordion
+                v-for="(pricing, index) in pricing.data"
+                :key="index"
+                :title="pricing.title"
+                :price="getPricingPrice(pricing.price)"
+                :feature="pricing.features"
+                :show="activePricing === index"
+                @toggle="setActivePricing(index)"
+              />
+            </div>
+          </div>
+        </main>
       </div>
     </section>
   </main>
