@@ -178,12 +178,12 @@ onMounted(() => {
       ref="aboutUsSection"
     >
       <img
-        src="src\assets\vectors\AboutUsVector.svg"
+        :src="'src/assets/vectors/AboutUsVector.svg'"
         alt=""
         class="absolute scale-[200%] rotate-[143deg] top-40 left-1/3 md:scale-150 lg:scale-100 lg:rotate-[24deg] lg:-left-24 lg:top-32 z-0"
       />
       <img
-        src="src\assets\vectors\AboutUsVector.svg"
+        :src="'src/assets/vectors/AboutUsVector.svg'"
         alt=""
         class="absolute scale-[200%] -rotate-[140deg] -bottom-4 left-20 translate-x-2 md:scale-150 lg:scale-100 lg:-rotate-[44deg] lg:left-auto lg:-right-36 lg:bottom-48 z-0"
       />
@@ -343,7 +343,7 @@ onMounted(() => {
             <div class="hidden items-center w-1/3 lg:flex">
               <img
                 class="aspect-square rounded-2xl object-cover object-center w-full"
-                src="src\assets\daniel-syahrul.png"
+                :src="'src/assets/daniel-syahrul.png'"
                 alt=""
               />
             </div>
@@ -368,7 +368,7 @@ onMounted(() => {
               <div class="flex gap-6">
                 <img
                   class="aspect-square rounded-2xl object-cover object-center w-32 lg:hidden"
-                  src="src\assets\daniel-syahrul.png"
+                  :src="'src/assets/daniel-syahrul.png'"
                   alt=""
                 />
                 <div class="flex flex-col gap-1">
@@ -496,12 +496,12 @@ onMounted(() => {
                     >
                       <img
                         class="absolute rotate-[30deg] -top-[2%] -right-[1%] scale-125 transition-all ease-in-out delay-15000 duration-300 opacity-0 -translate-y-full group-hover:opacity-100 group-hover:translate-y-0"
-                        src="src/assets/vectors/MultipleLineVector.svg"
+                        :src="'src/assets/vectors/MultipleLineVector.svg'"
                         alt=""
                       />
                       <img
                         class="absolute rotate-[30deg] bottom-0 -left-[25%] scale-125 transition-all ease-in-out delay-15000 duration-300 opacity-0 translate-y-full group-hover:opacity-100 group-hover:-translate-y-full"
-                        src="src/assets/vectors/MultipleLineVector.svg"
+                        :src="'src/assets/vectors/MultipleLineVector.svg'"
                         alt=""
                       />
 

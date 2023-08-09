@@ -61,7 +61,7 @@ const leave = (el) => {
             ? 'opacity-100 translate-y-0'
             : 'opacity-0 -translate-y-full'
         "
-        src="src/assets/vectors/MultipleLineVector.svg"
+        :src="'src/assets/vectors/MultipleLineVector.svg'"
         alt=""
       />
       <img
@@ -71,7 +71,7 @@ const leave = (el) => {
             ? 'opacity-100 translate-y-0'
             : 'opacity-0 translate-y-full'
         "
-        src="src/assets/vectors/MultipleLineVector.svg"
+        :src="'src/assets/vectors/MultipleLineVector.svg'"
         alt=""
       />
 

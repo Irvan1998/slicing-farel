@@ -51,7 +51,7 @@ watch(
 <template>
   <header>
     <RouterLink to="/">
-      <img class="lg:h-12" src="./assets/logo.svg" alt="corze" />
+      <img class="lg:h-12" :src="'/src/assets/logo.svg'" alt="corze" />
     </RouterLink>
 
     <nav class="hidden lg:flex gap-12">
@@ -123,17 +123,17 @@ watch(
           <div class="flex flex-wrap gap-3 lg:gap-6 lg:h-12">
             <img
               class="h-full"
-              src="src\assets\google-play.svg"
+              :src="'src/assets/google-play.svg'"
               alt="Google Play"
             />
             <img
               class="h-full"
-              src="src\assets\app-store.svg"
+              :src="'src/assets/app-store.svg'"
               alt="App Store"
             />
             <img
               class="h-full"
-              src="src\assets\microsoft-store.svg"
+              :src="'src/assets/microsoft-store.svg'"
               alt="Microsoft Store"
             />
           </div>
@@ -143,12 +143,12 @@ watch(
         >
           <img
             class="bg-[#EAF6FE] rounded-tl-xl rounded-bl-xl w-1/3"
-            src="src\assets\footer-phone-pict.svg"
+            :src="'src/assets/footer-phone-pict.svg'"
             alt=""
           />
           <img
             class="bg-[#EAF6FE] rounded-tr-xl rounded-br-xl w-full"
-            src="src\assets\footer-desktop-pict.svg"
+            :src="'src/assets/footer-desktop-pict.svg'"
             alt=""
           />
         </div>
@@ -157,7 +157,7 @@ watch(
       <div
         class="flex justify-between items-center gap-4 flex-wrap pt-4 lg:pt-10"
       >
-        <img class="lg:h-12" src="./assets/logo.svg" alt="corze" />
+        <img class="lg:h-12" :src="'src/assets/logo.svg'" alt="corze" />
         <p
           class="text-xs text-center text-text-light w-full order-2 lg:order-none lg:w-fit lg:text-base"
         >
